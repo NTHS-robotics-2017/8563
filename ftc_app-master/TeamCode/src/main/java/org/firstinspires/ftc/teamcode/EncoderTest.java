@@ -23,7 +23,7 @@ public class EncoderTest extends LinearOpMode {
     static final double     DRIVE_GEAR_REDUCTION    = 1.0 ;
     static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;
     static final double     COUNTS         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) / (WHEEL_DIAMETER_INCHES * Math.PI);
-    static final double     DRIVE_SPEED             = 0.6;
+    static final double     DRIVE_SPEED             = .6;
 //    static final double     TURN_SPEED              = 0.5;
 
     @Override
@@ -56,6 +56,7 @@ public class EncoderTest extends LinearOpMode {
         waitForStart();
 
         encoderDrive(DRIVE_SPEED, 48, 48, 5.0);
+        
         telemetry.addData("Path", "Complete");
         telemetry.update();
     }
@@ -65,10 +66,8 @@ public class EncoderTest extends LinearOpMode {
         int newLeftTarget;
         int newRightTarget;
 
-        // Ensure that the opmode is still active
         if (opModeIsActive()) {
 
-            // Determine new target position, and pass to motor controller
             newLeftTarget = Motor1.getCurrentPosition() + (int)(leftInches * COUNTS);
             newRightTarget = Motor3.getCurrentPosition() + (int)(rightInches * COUNTS);
             Motor1.setTargetPosition(newLeftTarget);
@@ -86,7 +85,6 @@ public class EncoderTest extends LinearOpMode {
                     (runtime.seconds() < timeoutS) &&
                     (Motor1.isBusy() && Motor3.isBusy())) {
 
-                // Display it for the driver.
                 telemetry.addData("Path1",  "Running to %7d :%7d", newLeftTarget,  newRightTarget);
                 telemetry.addData("Path2",  "Running at %7d :%7d",
                         Motor1.getCurrentPosition(),
@@ -94,27 +92,14 @@ public class EncoderTest extends LinearOpMode {
                 telemetry.update();
             }
 
-            // Stop all motion;
             Motor1.setPower(0);
             Motor3.setPower(0);
 
-            // Turn off RUN_TO_POSITION
             Motor1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             Motor3.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-            //  sleep(250);   // optional pause after each move
+            sleep(250);
         }
-
-
-        /*
-        Motor1.setTargetPosition((int)COUNTS);
-        Motor3.setTargetPosition((int)COUNTS);
-        while(opModeIsActive() && Motor1.isBusy() && Motor3.isBusy()) {}
-
-        Motor1.setTargetPosition(Motor1.getCurrentPosition() + 200);
-        Motor3.setTargetPosition(Motor3.getCurrentPosition() + 200);
-        while(opModeIsActive() && Motor1.isBusy() && Motor3.isBusy()) {}
-        */
     }
 }
 
