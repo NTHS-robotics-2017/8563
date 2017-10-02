@@ -56,7 +56,7 @@ public class EncoderTest extends LinearOpMode {
         waitForStart();
 
         encoderDrive(DRIVE_SPEED, 48, 48, 5.0);
-        
+
         telemetry.addData("Path", "Complete");
         telemetry.update();
     }
