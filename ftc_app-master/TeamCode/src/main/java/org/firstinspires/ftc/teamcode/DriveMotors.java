@@ -10,44 +10,44 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class DriveMotors
 {
-    public DcMotor  Motor1   = null;
-    public DcMotor  Motor2  = null;
-    public DcMotor  Motor3   = null;
-    public DcMotor  Motor4   = null;
+    //Declaring motors
+    public DcMotor  f_l   = null;
+    public DcMotor  b_l  = null;
+    public DcMotor  f_r   = null;
+    public DcMotor  b_r   = null;
 
+    //Creating hwMap object and setting it to null
     HardwareMap hwMap           =  null;
-    
     private ElapsedTime period  = new ElapsedTime();
 
-      public DriveMotors(){
+    //Constructing DriveMotors public object for use to call into another program
+    public DriveMotors() {
 
     }
-
+    //This section runs during initialization
     public void init(HardwareMap ahwMap) {
 
+        //Giving hwMap a value
         hwMap = ahwMap;
 
-        Motor1 = hwMap.dcMotor.get("m_f_l");
-        Motor2 = hwMap.dcMotor.get("m_b_l");
-        Motor3 = hwMap.dcMotor.get("m_f_r");
-        Motor4 = hwMap.dcMotor.get("m_b_r");
-        Motor3.setDirection(DcMotor.Direction.REVERSE);
-        Motor4.setDirection(DcMotor.Direction.REVERSE);
+        //Declaring drive motors to use in other classes
+        f_l = hwMap.get(DcMotor.class, "m_f_l");
+        b_l = hwMap.get(DcMotor.class, "m_b_l");
+        f_r = hwMap.get(DcMotor.class, "m_f_r");
+        b_r = hwMap.get(DcMotor.class, "m_b_r");
+        f_r.setDirection(DcMotor.Direction.REVERSE);
+        b_r.setDirection(DcMotor.Direction.REVERSE);
 
+        //Setting power to 0 to make sure nothing moves
+        f_r.setPower(0);
+        b_r.setPower(0);
+        f_l.setPower(0);
+        b_l.setPower(0);
 
-        Motor1.setPower(0);
-        Motor2.setPower(0);
-        Motor3.setPower(0);
-        Motor4.setPower(0);
-
-        Motor1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        Motor2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        Motor3.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        Motor4.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
-        /*Motor1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        Motor2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        Motor3.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        Motor4.setMode(DcMotor.RunMode.RUN_USING_ENCODER);*/
+        //Sets motors to default to using encoders for movement, for driver operation have it set to not use them
+        f_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        b_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        f_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        b_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
- }
+}

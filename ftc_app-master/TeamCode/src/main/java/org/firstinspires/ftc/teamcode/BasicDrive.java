@@ -3,37 +3,41 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp(name="BasicDrive")
 
 public class BasicDrive extends LinearOpMode
 {
-    DcMotor Motor1 = null;
-    DcMotor Motor2 = null;
-    DcMotor Motor3 = null;
-    DcMotor Motor4 = null;
+    //Declares robot object to get information from DriveMotors.java
+    DriveMotors         robot   = new DriveMotors();
+
+    private ElapsedTime runtime = new ElapsedTime();
 
     @Override
     public void runOpMode() throws InterruptedException {
+
+        //Updates telemetry on phone to show it is initialized
         telemetry.addData("Status", "Initialized");
         telemetry.update();
-        Motor1 = hardwareMap.dcMotor.get("m_f_l");
-        Motor2 = hardwareMap.dcMotor.get("m_b_l");
-        Motor3 = hardwareMap.dcMotor.get("m_f_r");
-        Motor4 = hardwareMap.dcMotor.get("m_b_r");
-        Motor3.setDirection(DcMotor.Direction.REVERSE);
-        Motor4.setDirection(DcMotor.Direction.REVERSE);
 
+        //Pulls hardware from robot object
+        robot.init(hardwareMap);
+
+        //Sets motors to run without encoders for driver operation
+        robot.f_l.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        robot.b_l.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        robot.f_r.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        robot.b_r.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         waitForStart();
-
         while (opModeIsActive())
         {
+            //Sets robot to operate using controller
             telemetry.update();
-
-            Motor1.setPower(gamepad1.left_stick_y);
-            Motor2.setPower(gamepad1.left_stick_y);
-            Motor3.setPower(gamepad1.right_stick_y );
-            Motor4.setPower(gamepad1.right_stick_y);
+            robot.f_l.setPower(gamepad1.left_stick_y);
+            robot.b_l.setPower(gamepad1.left_stick_y);
+            robot.f_r.setPower(gamepad1.right_stick_y );
+            robot.b_r.setPower(gamepad1.right_stick_y);
             idle();
         }
 
