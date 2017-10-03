@@ -58,10 +58,12 @@ public class EncoderByDistance extends LinearOpMode {
 
         //Reverse movement is entered as a negative value
 
-        //Drives 48 inches in a straight line, then waits 6 seconds
+        //Drives 48 inches in a straight line, times out after 6 seconds.
         encoderDrive(DRIVE_SPEED, 48, 48, 6.0);
         sleep(2000);
-        encoderDrive(TURN_SPEED, -24, 24, 5);
+        encoderDrive(TURN_SPEED, -4, 4, 5);
+        sleep(2000);
+        encoderDrive(DRIVE_SPEED, 48, 48, 5);
         sleep(2000);
 
         //Turns right for 12 inches of wheel movement, then waits for 5 seconds
