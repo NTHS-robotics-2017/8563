@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /*
@@ -35,15 +36,15 @@ public class DriveMotors
         b_l = hwMap.get(DcMotor.class, "m_b_l");
         f_r = hwMap.get(DcMotor.class, "m_f_r");
         b_r = hwMap.get(DcMotor.class, "m_b_r");
-        f_r.setDirection(DcMotor.Direction.REVERSE);
-        b_r.setDirection(DcMotor.Direction.REVERSE);
+        f_l.setDirection(DcMotor.Direction.REVERSE);
+        b_l.setDirection(DcMotor.Direction.REVERSE);
 
-        //Setting power to 0 to make sure nothing moves
+/*        //Setting power to 0 to make sure nothing moves
         f_r.setPower(0);
         b_r.setPower(0);
         f_l.setPower(0);
         b_l.setPower(0);
-
+*/
         //Sets motors to default to using encoders for movement, for driver operation have it set to not use them
         f_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         b_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

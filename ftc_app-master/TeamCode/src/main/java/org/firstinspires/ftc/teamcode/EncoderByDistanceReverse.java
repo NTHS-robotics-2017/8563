@@ -9,8 +9,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by zain- on 10/1/2017.
  */
 
-@Autonomous(name="EncoderByDistance")
-public class EncoderByDistance extends LinearOpMode {
+@Autonomous(name="EncoderByDistanceReverse")
+public class EncoderByDistanceReverse extends LinearOpMode {
     
     //Declares robot object to get information from DriveMotors.java
     DriveMotors     robot = new DriveMotors();
@@ -54,18 +54,15 @@ public class EncoderByDistance extends LinearOpMode {
                 robot.b_r.getCurrentPosition());
         telemetry.update();
 
+        //Telemetry updates showing it is initialized
+
+
         waitForStart();
 
         //Reverse movement is entered as a negative value
 
-        //Drives 48 inches in a straight line, then waits 6 seconds
-        encoderDrive(DRIVE_SPEED, 48, 48, 6.0);
-        sleep(2000);
-        encoderDrive(TURN_SPEED, -24, 24, 5);
-        sleep(2000);
-
-        //Turns right for 12 inches of wheel movement, then waits for 5 seconds
-        //encoderDrive(TURN_SPEED, 12, -12, 4.0);
+        //Drives 48 inches in a straight line, then waits 5 seconds
+        encoderDrive(DRIVE_SPEED, -48, -48, 5.0);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
