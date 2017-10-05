@@ -47,22 +47,22 @@ public class VuforiaEncoder extends LinearOpMode {
         telemetry.update();
 
 // Making sure encoders are at 0 position
-        robot.b_l.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.b_r.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+       // robot.b_l.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //robot.b_r.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        robot.b_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.b_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //robot.b_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //robot.b_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         //Telemetry debugging to find out if encoders didn't reset
-        telemetry.addData("Path0", "Starting at %7d :%7d",
-                robot.b_l.getCurrentPosition(),
-                robot.b_r.getCurrentPosition());
-        telemetry.update();
+        //telemetry.addData("Path0", "Starting at %7d :%7d",
+        //        robot.b_l.getCurrentPosition(),
+        //        robot.b_r.getCurrentPosition());
+        //telemetry.update();
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
 
-        parameters.vuforiaLicenseKey = "ATsODcD/////AAAAAVw2lR...d45oGpdljdOh5LuFB9nDNfckoxb8COxKSFX";
+        parameters.vuforiaLicenseKey = "AXwlB+P/////AAAAGW96tnY1DkbXgYvfIAP7K01bMwKO6qkYdaF3ZVJS9Ln1WMSI2fTzpeO0aFDeRvKk/BJaqDdAppbDU1BZO2psTZH7YrMhdKMzK7DYYVQXizfnupwhetlWGPf3pf5JuHDZaBls+I1v9gfTaVIwTYqNoDezto+Tw5pAr7kF9r8lasrl+7xbsD0kmGqtx75aV/ddgCNJxWWWNXMb3ajSe35888+5SjfJKeLaQjLGbWMF6wMU42ZQVZJ5kyXSfh80wpJcd7pTdZ/yXve0G+EJNaX7v+FkB3y1fkIR0REoYHDUct/a2z2dhXou8EYQZUHDoghUNQnyDfy7nMaL4sxoqsS9fsf9AxVtCAWkpKQiWmruLswx";
 
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
@@ -76,43 +76,38 @@ public class VuforiaEncoder extends LinearOpMode {
         //Fetches the identity of the VuMark from the relic template
         RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
 
+        relicTrackables.activate();
+
         //If there is a visible VuMark in the camera, it will return either LEFT, CENTER, or RIGHT
-        //This function makes it so it only runs everything after it if it actually detects a VuMark
-        if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
+        while (opModeIsActive()) {
+            if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
 
-            //If a VuMark is visible, it will tell you which column on the driver station.
-            telemetry.addData("VuMark", "%s visible", vuMark);
-
-            //If it's the left, this will run
-            if (vuMark == RelicRecoveryVuMark.LEFT){
-                telemetry.addData("Vumark","Left");
+                //If a VuMark is visible, it will tell you which column on the driver station.
+                telemetry.addData("VuMark", "%s visible", vuMark);
             }
 
-            //If it's the center, this will run
-            if (vuMark == RelicRecoveryVuMark.CENTER){
-                telemetry.addData("Vumark","Center");
+            else {
+                telemetry.addData("VuMark", "Not Visible");
             }
-
-            //If it's the right, this will run
-            if (vuMark == RelicRecoveryVuMark.RIGHT){
-                telemetry.addData("Vumark","Right");
-            }
-        }
+            telemetry.update();
 
 // Reverse movement is entered as a negative value
 
 // Drives 48 inches in a straight line, times out after 6 seconds.
-        encoderDrive(DRIVE_SPEED, 48, 48, 6.0);
-        sleep(2000);
-        encoderDrive(TURN_SPEED, -4, 4, 5);
-        sleep(2000);
-        encoderDrive(DRIVE_SPEED, 48, 48, 5);
-        sleep(2000);
+            if (vuMark == RelicRecoveryVuMark.LEFT) {
+                encoderDrive(DRIVE_SPEED, 48, 48, 6.0);
+            }
+//        sleep(2000);
+//        encoderDrive(TURN_SPEED, -4, 4, 5);
+//        sleep(2000);
+//        encoderDrive(DRIVE_SPEED, 48, 48, 5);
+//        sleep(2000);
 
 // Turns right for 12 inches of wheel movement, then waits for 5 seconds
- encoderDrive(TURN_SPEED, 12, -12, 4.0);
-        telemetry.addData("Path", "Complete");
-        telemetry.update();
+// encoderDrive(TURN_SPEED, 12, -12, 4.0);
+//        telemetry.addData("Path", "Complete");
+//        telemetry.update();
+        }
     }
 
 // Creates an encoderDrive object to use in programs, having it do the math for you with a few basic inputs.
