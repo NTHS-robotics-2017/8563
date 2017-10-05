@@ -36,20 +36,14 @@ public class EncoderByDistance extends LinearOpMode {
         telemetry.update();
 
 // Making sure encoders are at 0 position
-//        robot.f_l.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-//        robot.f_r.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.b_l.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.b_r.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-//        robot.f_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-//        robot.f_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.b_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.b_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         //Telemetry debugging to find out if encoders didn't reset
         telemetry.addData("Path0", "Starting at %7d :%7d",
-//                robot.f_l.getCurrentPosition(),
-//                robot.f_r.getCurrentPosition(),
                 robot.b_l.getCurrentPosition(),
                 robot.b_r.getCurrentPosition());
         telemetry.update();
@@ -77,37 +71,27 @@ public class EncoderByDistance extends LinearOpMode {
                              double leftInches, double rightInches,
                              double timeoutS) {
 // Declaring Integers
-        int newfLeftTarget;
-        int newfRightTarget;
-        int newbLeftTarget;
-        int newbRightTarget;
+        int newLeftTarget;
+        int newRightTarget;
 
 // Loops as long as OpMode is running
         if (opModeIsActive()) {
 // Uses math stated previously to calculate counts to move
-            newfLeftTarget = robot.f_l.getCurrentPosition() + (int)(leftInches * COUNTS);
-            newfRightTarget = robot.f_r.getCurrentPosition() + (int)(rightInches * COUNTS);
-            newbLeftTarget = robot.f_l.getCurrentPosition() + (int)(leftInches * COUNTS);
-            newbRightTarget = robot.f_r.getCurrentPosition() + (int)(rightInches * COUNTS);
+            newLeftTarget = robot.b_l.getCurrentPosition() + (int)(leftInches * COUNTS);
+            newRightTarget = robot.b_r.getCurrentPosition() + (int)(rightInches * COUNTS);
 
 
 // Sets encoder target position to new calculated position
-//            robot.f_l.setTargetPosition(newfLeftTarget);
-//            robot.f_r.setTargetPosition(newfRightTarget);
-            robot.b_l.setTargetPosition(newbLeftTarget);
-            robot.b_r.setTargetPosition(newbRightTarget);
+            robot.b_l.setTargetPosition(newLeftTarget);
+            robot.b_r.setTargetPosition(newRightTarget);
 
 // Runs the motors to get to the desired target position
-//            robot.f_l.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//            robot.f_r.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             robot.b_l.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             robot.b_r.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             runtime.reset();
 
 // Sets the power of the motors to the absolute value of the speed
-//            robot.f_l.setPower(Math.abs(speed));
-//            robot.f_r.setPower(Math.abs(speed));
             robot.b_l.setPower(Math.abs(speed));
             robot.b_r.setPower(Math.abs(speed));
 
@@ -116,26 +100,20 @@ public class EncoderByDistance extends LinearOpMode {
 
 // Updates telemetry with new positions and current positions as long as the code and both motors are still running
                     (runtime.seconds() < timeoutS) &&
-                    (robot.f_l.isBusy() && robot.f_r.isBusy()&& robot.b_l.isBusy()&& robot.b_r.isBusy())) {
+                    (robot.b_l.isBusy()&& robot.b_r.isBusy())) {
 
 // Displays new target positions on the telemetry for debugging
-                telemetry.addData("Path1",  "Running to %7d :%7d", /* newfLeftTarget,  newfRightTarget, */ newbLeftTarget,  newbRightTarget);
+                telemetry.addData("Path1",  "Running to %7d :%7d", newLeftTarget,  newRightTarget);
                 telemetry.addData("Path2",  "Running at %7d :%7d",
-//                        robot.f_l.getCurrentPosition(),
-//                        robot.f_r.getCurrentPosition(),
                         robot.b_l.getCurrentPosition(),
                         robot.b_r.getCurrentPosition());
                 telemetry.update();
             }
 
 // Sets the power of the motor to 0 to make sure there is no movement
-//            robot.f_l.setPower(0);
-//            robot.f_r.setPower(0);
             robot.b_l.setPower(0);
             robot.b_r.setPower(0);
 
-//            robot.f_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-//            robot.f_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.b_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.b_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
