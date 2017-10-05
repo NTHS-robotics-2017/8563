@@ -47,17 +47,17 @@ public class VuforiaEncoder extends LinearOpMode {
         telemetry.update();
 
 // Making sure encoders are at 0 position
-       // robot.b_l.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //robot.b_r.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        robot.b_l.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        robot.b_r.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        //robot.b_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //robot.b_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        robot.b_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        robot.b_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        //Telemetry debugging to find out if encoders didn't reset
-        //telemetry.addData("Path0", "Starting at %7d :%7d",
-        //        robot.b_l.getCurrentPosition(),
-        //        robot.b_r.getCurrentPosition());
-        //telemetry.update();
+//      Telemetry debugging to find out if encoders didn't reset
+//        telemetry.addData("Path0", "Starting at %7d :%7d",
+//                robot.b_l.getCurrentPosition(),
+//                robot.b_r.getCurrentPosition());
+//        telemetry.update();
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
@@ -73,13 +73,11 @@ public class VuforiaEncoder extends LinearOpMode {
 
         waitForStart();
 
-        //Fetches the identity of the VuMark from the relic template
-        RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
-
         relicTrackables.activate();
 
         //If there is a visible VuMark in the camera, it will return either LEFT, CENTER, or RIGHT
         while (opModeIsActive()) {
+            RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
             if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
 
                 //If a VuMark is visible, it will tell you which column on the driver station.
@@ -91,9 +89,9 @@ public class VuforiaEncoder extends LinearOpMode {
             }
             telemetry.update();
 
-// Reverse movement is entered as a negative value
+            //Reverse movement is entered as a negative value
 
-// Drives 48 inches in a straight line, times out after 6 seconds.
+            //Drives 48 inches in a straight line, times out after 6 seconds.
             if (vuMark == RelicRecoveryVuMark.LEFT) {
                 encoderDrive(DRIVE_SPEED, 48, 48, 6.0);
             }
@@ -103,14 +101,14 @@ public class VuforiaEncoder extends LinearOpMode {
 //        encoderDrive(DRIVE_SPEED, 48, 48, 5);
 //        sleep(2000);
 
-// Turns right for 12 inches of wheel movement, then waits for 5 seconds
+//Turns right for 12 inches of wheel movement, then waits for 5 seconds
 // encoderDrive(TURN_SPEED, 12, -12, 4.0);
 //        telemetry.addData("Path", "Complete");
 //        telemetry.update();
         }
     }
 
-// Creates an encoderDrive object to use in programs, having it do the math for you with a few basic inputs.
+//Creates an encoderDrive object to use in programs, having it do the math for you with a few basic inputs.
     public void encoderDrive(double speed,
                              double leftInches, double rightInches,
                              double timeoutS) {
