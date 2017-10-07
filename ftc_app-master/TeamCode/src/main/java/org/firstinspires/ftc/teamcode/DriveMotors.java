@@ -32,7 +32,7 @@ public class DriveMotors {
 // Declaring drive motors to use in other classes
         b_l = hwMap.get(DcMotor.class, "m_b_l");
         b_r = hwMap.get(DcMotor.class, "m_b_r");
-        b_l.setDirection(DcMotor.Direction.REVERSE);
+        b_r.setDirection(DcMotor.Direction.REVERSE);
 
 // Sets motors to default to using encoders for movement, for driver operation have it set to not use them
         b_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
