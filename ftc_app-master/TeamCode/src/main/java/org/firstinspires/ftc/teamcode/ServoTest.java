@@ -26,7 +26,7 @@ public class ServoTest extends LinearOpMode {
             servo.setPosition(0);
             telemetry.addData("Servo Position", servo.getPosition());
             sleep(5000);
-            servo.setPosition(16);
+            servo.setPosition(1);
             sleep(5000);
             telemetry.addData("Servo Position", servo.getPosition());
             idle();
