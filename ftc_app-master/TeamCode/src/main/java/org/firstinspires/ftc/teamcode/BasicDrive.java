@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp(name="BasicDrive")
-
 public class BasicDrive extends LinearOpMode {
 
 // Declares robot object to get information from DriveMotors.java
