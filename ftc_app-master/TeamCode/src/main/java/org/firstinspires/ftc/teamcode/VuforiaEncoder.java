@@ -24,6 +24,8 @@ public class VuforiaEncoder extends LinearOpMode {
 
     private ElapsedTime     runtime = new ElapsedTime();
 
+   RelicRecoveryVuMark vuMark;
+
 // Setting statistics of the motors/robot & doing basic math required in the program
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;
     static final double     DRIVE_GEAR_REDUCTION    = 1.0 ;
@@ -77,7 +79,7 @@ public class VuforiaEncoder extends LinearOpMode {
 
         //If there is a visible VuMark in the camera, it will return either LEFT, CENTER, or RIGHT
         while (opModeIsActive()) {
-            RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
+            vuMark = RelicRecoveryVuMark.from(relicTemplate);
             if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
 
                 //If a VuMark is visible, it will tell you which column on the driver station.
