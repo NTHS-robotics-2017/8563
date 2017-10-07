@@ -40,8 +40,6 @@ public class DriveByGyroConcept extends LinearOpMode {
         robot.init(hardwareMap);
         gyro = (ModernRoboticsI2cGyro)hardwareMap.gyroSensor.get("gyro");
 
-//        robot.f_l.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-//        robot.f_r.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.b_l.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.b_r.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
@@ -58,8 +56,6 @@ public class DriveByGyroConcept extends LinearOpMode {
         telemetry.addData(">", "Robot Ready.");    //
         telemetry.update();
 
-//        robot.f_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-//        robot.f_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.b_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.b_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 

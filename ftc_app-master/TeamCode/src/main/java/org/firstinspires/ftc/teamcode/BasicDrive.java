@@ -24,9 +24,7 @@ public class BasicDrive extends LinearOpMode {
         robot.init(hardwareMap);
 
 // Sets motors to run without encoders for driver operation
-//        robot.f_l.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.b_l.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-//        robot.f_r.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.b_r.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         waitForStart();
@@ -35,9 +33,7 @@ public class BasicDrive extends LinearOpMode {
 
 // Sets robot to operate using controller
             telemetry.update();
-//            robot.f_l.setPower(gamepad1.left_stick_y);
             robot.b_l.setPower(gamepad1.left_stick_y);
-//            robot.f_r.setPower(gamepad1.right_stick_y );
             robot.b_r.setPower(gamepad1.right_stick_y);
             idle();
         }
