@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /*
- * Created by Chance- on 10/7/2017.
+ * Created by Chance- on 10/7/2017. For purposes.
  */
 
 public class Servos {
