@@ -13,14 +13,13 @@ import com.qualcomm.robotcore.util.Range;
  */
 
 @Autonomous(name="Drive By Gyro")
-@Disabled
 public class DriveByGyroConcept extends LinearOpMode {
 
     DriveMotors         robot   = new DriveMotors();
     ModernRoboticsI2cGyro   gyro    = null;
 
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;
-    static final double     DRIVE_GEAR_REDUCTION    = 2.0 ;
+    static final double     DRIVE_GEAR_REDUCTION    = 1.0 ;
     static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * 3.1415);
@@ -67,7 +66,7 @@ public class DriveByGyroConcept extends LinearOpMode {
         gyro.resetZAxisIntegrator();
 
         gyroDrive(DRIVE_SPEED, 48.0, 0.0);    // Drive FWD 48 inches
-        gyroTurn( TURN_SPEED, -45.0);         // Turn  CCW to -45 Degrees
+/*        gyroTurn( TURN_SPEED, -45.0);         // Turn  CCW to -45 Degrees
         gyroHold( TURN_SPEED, -45.0, 0.5);    // Hold -45 Deg heading for a 1/2 second
         gyroDrive(DRIVE_SPEED, 12.0, -45.0);  // Drive FWD 12 inches at 45 degrees
         gyroTurn( TURN_SPEED,  45.0);         // Turn  CW  to  45 Degrees
@@ -75,7 +74,7 @@ public class DriveByGyroConcept extends LinearOpMode {
         gyroTurn( TURN_SPEED,   0.0);         // Turn  CW  to   0 Degrees
         gyroHold( TURN_SPEED,   0.0, 1.0);    // Hold  0 Deg heading for a 1 second
         gyroDrive(DRIVE_SPEED,-48.0, 0.0);    // Drive REV 48 inches
-
+*/
         telemetry.addData("Path", "Complete");
         telemetry.update();
     }
