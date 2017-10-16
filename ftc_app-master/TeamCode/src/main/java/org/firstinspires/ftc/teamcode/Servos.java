@@ -11,7 +11,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class Servos {
 
     // Declaring motors
-    public Servo  servoArm  = null;
     public Servo  servoClaw  = null;
 
     // Creating hwMap object and setting it to null
@@ -30,7 +29,6 @@ public class Servos {
         hwMap = ahwMap;
 
 // Declaring servos to use in other classes
-        servoArm = hwMap.get(Servo.class, "servoArm");
         servoClaw = hwMap.get(Servo.class, "servoClaw");
     }
 }
