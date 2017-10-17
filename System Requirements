@@ -1,0 +1,19 @@
+Glyph Arm:
+    Must be able to securely grip glyphs, slide them into the cryptobox and release
+        without knocking any glyphs out of the cryptobox.
+    Must be able to raise glyps to top of cryptobox without disturbing lower levels
+        of glyphs.
+
+Relic Arm:
+    Linear slide must be able to extend 32" from mounting point of robot. (Claw will
+        add a couple of inches.)
+    Claw must be capable of rotating upwards with relic in order to clear arena wall.
+    Claw must grab relic from down-most rotated position.
+    Claw must grab relic with enough force to keep the relic still relative to the 
+        claw mechanism. This is so that when the claw rotates fully back down after 
+        clearing the arena wall, the relic is already in the upright position and 
+        will remain standing when the claw releases the relic.
+
+Drivetrain:
+    Robot must be able to drive onto the balance board without requiring a specific
+        driving technique.
