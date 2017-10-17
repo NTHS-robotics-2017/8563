@@ -17,3 +17,25 @@ Relic Arm:
 Drivetrain:
     Robot must be able to drive onto the balance board without requiring a specific
         driving technique.
+
+
+
+
+*************************************************************************************
+Chance:
+    Work mostly on the autonomous programming. You can get that mostly done without 
+    the components complete, only requiring the components for testing. Start with 
+    the color sensor for the jewels, then figure out the method you guys want to use 
+    for navigating the robot towards putting the glyph into the appropriate column.
+    Visual navigation uses a lot of linear algebra (aka: matrices); from digging
+    around, I've found that FTC *generally* does that part for you somewhere in their
+    code and you *might* only have to figure out how to access it. If not, I'd start
+    getting that worked out.
+
+Zain:
+    Make sure everyone stays on task. It should not take multiple weeks to assemble
+    a robot like this one; most of the time is wasted to people fucking around.
+    The robot is the easy part. The programming is the hard part... And that's not
+    particularly hard either, to be honest; it's the bad time management that's
+    hurting the team the most.
+
