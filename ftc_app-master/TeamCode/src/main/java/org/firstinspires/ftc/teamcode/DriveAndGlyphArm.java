@@ -35,7 +35,7 @@ public class DriveAndGlyphArm extends LinearOpMode {
 // Sets motors to run without encoders for driver operation
         robot.b_l.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.b_r.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        robotServo.servoClaw.setPosition(openClawPosition);
+        robotServo.servoClaw.setPosition(0);
 
         waitForStart();
 
