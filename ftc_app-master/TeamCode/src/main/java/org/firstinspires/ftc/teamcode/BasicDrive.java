@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class BasicDrive extends LinearOpMode {
 
 // Declares robot object to get information from DriveMotors.java
-    DriveMotors         robot   = new DriveMotors();
+    DriveMotors         motors   = new DriveMotors();
 
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -21,11 +21,11 @@ public class BasicDrive extends LinearOpMode {
         telemetry.update();
 
 // Pulls hardware from robot object
-        robot.init(hardwareMap);
+        motors.init(hardwareMap);
 
 // Sets motors to run without encoders for driver operation
-        robot.b_l.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        robot.b_r.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        motors.left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        motors.right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         waitForStart();
 
@@ -33,8 +33,8 @@ public class BasicDrive extends LinearOpMode {
 
 // Sets robot to operate using controller
             telemetry.update();
-            robot.b_l.setPower(gamepad1.left_stick_y);
-            robot.b_r.setPower(gamepad1.right_stick_y);
+            motors.left.setPower(gamepad1.left_stick_y);
+            motors.right.setPower(gamepad1.right_stick_y);
             idle();
         }
     }

@@ -11,8 +11,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class DriveMotors {
 
 // Declaring motors
-    public DcMotor  b_l  = null;
-    public DcMotor  b_r  = null;
+    public DcMotor  left  = null;
+    public DcMotor  right  = null;
     public DcMotor  arm  = null;
 
 // Creating hwMap object and setting it to null
@@ -31,15 +31,15 @@ public class DriveMotors {
         hwMap = ahwMap;
 
 // Declaring drive motors to use in other classes
-        b_l = hwMap.get(DcMotor.class, "m_b_l");
-        b_r = hwMap.get(DcMotor.class, "m_b_r");
+        left = hwMap.get(DcMotor.class, "m_l");
+        right = hwMap.get(DcMotor.class, "m_r");
         arm = hwMap.get(DcMotor.class, "arm");
 
 // Sets right motor to reverse direction
-        b_r.setDirection(DcMotor.Direction.REVERSE);
+        right.setDirection(DcMotor.Direction.REVERSE);
 
 // Sets motors to default to using encoders for movement, for driver operation have it set to not use them
-        b_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        b_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 }
