@@ -36,16 +36,16 @@ public class EncoderByDistanceReverse extends LinearOpMode {
         telemetry.update();
 
 // Making sure encoders are at 0 position
-        robot.b_l.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.b_r.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        robot.b_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.b_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         //Telemetry debugging to find out if encoders didn't reset
         telemetry.addData("Path0", "Starting at %7d :%7d",
-                robot.b_l.getCurrentPosition(),
-                robot.b_r.getCurrentPosition());
+                robot.left.getCurrentPosition(),
+                robot.right.getCurrentPosition());
         telemetry.update();
 
         waitForStart();
@@ -79,45 +79,45 @@ public class EncoderByDistanceReverse extends LinearOpMode {
 // Loops as long as OpMode is running
         if (opModeIsActive()) {
 // Uses math stated previously to calculate counts to move
-            newLeftTarget = robot.b_l.getCurrentPosition() + (int)(leftInches * COUNTS);
-            newRightTarget = robot.b_r.getCurrentPosition() + (int)(rightInches * COUNTS);
+            newLeftTarget = robot.left.getCurrentPosition() + (int)(leftInches * COUNTS);
+            newRightTarget = robot.right.getCurrentPosition() + (int)(rightInches * COUNTS);
 
 
 // Sets encoder target position to new calculated position
-            robot.b_l.setTargetPosition(newLeftTarget);
-            robot.b_r.setTargetPosition(newRightTarget);
+            robot.left.setTargetPosition(newLeftTarget);
+            robot.right.setTargetPosition(newRightTarget);
 
 // Runs the motors to get to the desired target position
-            robot.b_l.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.b_r.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             runtime.reset();
 
 // Sets the power of the motors to the absolute value of the speed
-            robot.b_l.setPower(Math.abs(speed));
-            robot.b_r.setPower(Math.abs(speed));
+            robot.left.setPower(Math.abs(speed));
+            robot.right.setPower(Math.abs(speed));
 
 // Loops as long as OpMode is running
             while (opModeIsActive() &&
 
 // Updates telemetry with new positions and current positions as long as the code and both motors are still running
                     (runtime.seconds() < timeoutS) &&
-                    (robot.b_l.isBusy()&& robot.b_r.isBusy())) {
+                    (robot.left.isBusy()&& robot.right.isBusy())) {
 
 // Displays new target positions on the telemetry for debugging
                 telemetry.addData("Path1",  "Running to %7d :%7d", newLeftTarget,  newRightTarget);
                 telemetry.addData("Path2",  "Running at %7d :%7d",
-                        robot.b_l.getCurrentPosition(),
-                        robot.b_r.getCurrentPosition());
+                        robot.left.getCurrentPosition(),
+                        robot.right.getCurrentPosition());
                 telemetry.update();
             }
 
 // Sets the power of the motor to 0 to make sure there is no movement
-            robot.b_l.setPower(0);
-            robot.b_r.setPower(0);
+            robot.left.setPower(0);
+            robot.right.setPower(0);
 
-            robot.b_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.b_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
             sleep(250);
         }
