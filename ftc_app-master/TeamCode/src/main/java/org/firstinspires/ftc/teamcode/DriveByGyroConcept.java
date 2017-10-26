@@ -39,8 +39,8 @@ public class DriveByGyroConcept extends LinearOpMode {
         robot.init(hardwareMap);
         gyro = (ModernRoboticsI2cGyro)hardwareMap.gyroSensor.get("gyro");
 
-        robot.b_l.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.b_r.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         telemetry.addData(">", "Calibrating Gyro");    //
         telemetry.update();
@@ -55,8 +55,8 @@ public class DriveByGyroConcept extends LinearOpMode {
         telemetry.addData(">", "Robot Ready.");    //
         telemetry.update();
 
-        robot.b_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.b_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         while (!isStarted()) {
             telemetry.addData(">", "Robot Heading = %d", gyro.getIntegratedZValue());
@@ -95,21 +95,21 @@ public class DriveByGyroConcept extends LinearOpMode {
         if (opModeIsActive()) {
 
             moveCounts = (int)(distance * COUNTS_PER_INCH);
-            newLeftTarget = robot.b_l.getCurrentPosition() + moveCounts;
-            newRightTarget = robot.b_r.getCurrentPosition() + moveCounts;
+            newLeftTarget = robot.left.getCurrentPosition() + moveCounts;
+            newRightTarget = robot.right.getCurrentPosition() + moveCounts;
 
-            robot.b_l.setTargetPosition(newLeftTarget);
-            robot.b_r.setTargetPosition(newRightTarget);
+            robot.left.setTargetPosition(newLeftTarget);
+            robot.right.setTargetPosition(newRightTarget);
 
-            robot.b_l.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.b_r.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             speed = Range.clip(Math.abs(speed), 0.0, 1.0);
-            robot.b_l.setPower(speed);
-            robot.b_r.setPower(speed);
+            robot.left.setPower(speed);
+            robot.right.setPower(speed);
 
             while (opModeIsActive() &&
-                    (robot.b_l.isBusy() && robot.b_r.isBusy())) {
+                    (robot.left.isBusy() && robot.right.isBusy())) {
 
                 error = getError(angle);
                 steer = getSteer(error, P_DRIVE_COEFF);
@@ -127,24 +127,24 @@ public class DriveByGyroConcept extends LinearOpMode {
                     rightSpeed /= max;
                 }
 
-                robot.b_l.setPower(leftSpeed);
-                robot.b_r.setPower(rightSpeed);
+                robot.left.setPower(leftSpeed);
+                robot.right.setPower(rightSpeed);
 
                 telemetry.addData("Err/St",  "%5.1f/%5.1f",  error, steer);
                 telemetry.addData("Target",  "%7d:%7d",      newLeftTarget,  newRightTarget);
 
-                telemetry.addData("Actual",  "%7d:%7d", robot.b_l.getCurrentPosition(),
-                        robot.b_r.getCurrentPosition());
+                telemetry.addData("Actual",  "%7d:%7d", robot.left.getCurrentPosition(),
+                        robot.right.getCurrentPosition());
 
                 telemetry.addData("Speed",   "%5.2f:%5.2f",  leftSpeed, rightSpeed);
                 telemetry.update();
             }
 
-            robot.b_l.setPower(0);
-            robot.b_r.setPower(0);
+            robot.left.setPower(0);
+            robot.right.setPower(0);
 
-            robot.b_l.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.b_r.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         }
     }
 
@@ -166,8 +166,8 @@ public class DriveByGyroConcept extends LinearOpMode {
             telemetry.update();
         }
 
-        robot.b_l.setPower(0);
-        robot.b_r.setPower(0);
+        robot.left.setPower(0);
+        robot.right.setPower(0);
     }
 
     boolean onHeading(double speed, double angle, double PCoeff) {
@@ -191,8 +191,8 @@ public class DriveByGyroConcept extends LinearOpMode {
             leftSpeed   = -rightSpeed;
         }
 
-        robot.b_l.setPower(leftSpeed);
-        robot.b_r.setPower(rightSpeed);
+        robot.left.setPower(leftSpeed);
+        robot.right.setPower(rightSpeed);
 
         telemetry.addData("Target", "%5.2f", angle);
         telemetry.addData("Err/St", "%5.2f/%5.2f", error, steer);
