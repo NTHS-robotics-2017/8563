@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
@@ -39,6 +40,9 @@ public class DriveByGyroConcept extends LinearOpMode {
         robot.init(hardwareMap);
         gyro = (ModernRoboticsI2cGyro)hardwareMap.gyroSensor.get("gyro");
 
+//        robot.left.setDirection(DcMotor.Direction.REVERSE);
+//        robot.right.setDirection(DcMotor.Direction.REVERSE);
+
         robot.left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
@@ -66,7 +70,7 @@ public class DriveByGyroConcept extends LinearOpMode {
         gyro.resetZAxisIntegrator();
 
         gyroDrive(DRIVE_SPEED, 48.0, 0.0);    // Drive FWD 48 inches
-/*        gyroTurn( TURN_SPEED, -45.0);         // Turn  CCW to -45 Degrees
+        gyroTurn( TURN_SPEED, -45.0);         // Turn  CCW to -45 Degrees
         gyroHold( TURN_SPEED, -45.0, 0.5);    // Hold -45 Deg heading for a 1/2 second
         gyroDrive(DRIVE_SPEED, 12.0, -45.0);  // Drive FWD 12 inches at 45 degrees
         gyroTurn( TURN_SPEED,  45.0);         // Turn  CW  to  45 Degrees
@@ -74,7 +78,7 @@ public class DriveByGyroConcept extends LinearOpMode {
         gyroTurn( TURN_SPEED,   0.0);         // Turn  CW  to   0 Degrees
         gyroHold( TURN_SPEED,   0.0, 1.0);    // Hold  0 Deg heading for a 1 second
         gyroDrive(DRIVE_SPEED,-48.0, 0.0);    // Drive REV 48 inches
-*/
+
         telemetry.addData("Path", "Complete");
         telemetry.update();
     }

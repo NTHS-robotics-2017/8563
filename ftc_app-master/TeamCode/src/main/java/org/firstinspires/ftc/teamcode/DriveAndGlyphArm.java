@@ -36,8 +36,6 @@ public class DriveAndGlyphArm extends LinearOpMode {
         motors.right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         servos.claw.setPosition(0);
 
-        motors.arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
         waitForStart();
 
         while (opModeIsActive()) {
@@ -61,7 +59,7 @@ public class DriveAndGlyphArm extends LinearOpMode {
 
 // Sets claw servo to open or closed position
             if (gamepad1.right_trigger == 1) {
-                servos.claw.setPosition(1);
+                servos.claw.setPosition(.7);
                 Thread.sleep(250); //Remove after testing
             } else if (gamepad1.left_trigger == 1) {
                 servos.claw.setPosition(0);
