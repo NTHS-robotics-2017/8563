@@ -34,7 +34,7 @@ public class DriveAndGlyphArm extends LinearOpMode {
 // Sets motors to run without encoders for driver operation
         motors.left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motors.right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        servos.claw.setPosition(0);
+        servos.claw.setPosition(1);
 
         waitForStart();
 
@@ -59,11 +59,11 @@ public class DriveAndGlyphArm extends LinearOpMode {
 
 // Sets claw servo to open or closed position
             if (gamepad1.right_trigger == 1) {
-                servos.claw.setPosition(.7);
-                Thread.sleep(250); //Remove after testing
+                servos.claw.setPosition(1);
+                Thread.sleep(250);
             } else if (gamepad1.left_trigger == 1) {
-                servos.claw.setPosition(0);
-                Thread.sleep(250); //Remove after testing0
+                servos.claw.setPosition(.5);
+                Thread.sleep(250);
             }
             idle();
         }
