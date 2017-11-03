@@ -32,6 +32,13 @@ public class DriveAndGlyphArmTwoController extends LinearOpMode {
         double motorSpeed = 1;
         boolean motorFast = true;
         boolean armFast = true;
+        boolean buttonARelease = true;
+        boolean leftBumperRelease = true;
+        boolean buttonAActive;
+        boolean leftBumperActive;
+        double currentRuntime;
+        double endRuntimeA = 0;
+        double endRuntimeBumper = 0;
 
 // Sets motors to run without encoders for driver operation
         motors.left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -42,24 +49,43 @@ public class DriveAndGlyphArmTwoController extends LinearOpMode {
 
         while (opModeIsActive()) {
 
+// Sets currentRuntime to the current elapsed time
+            currentRuntime = Math.round(System.nanoTime()/1E6);
+
 // Updates telemetry data
             telemetry.update();
             telemetry.addData("Servo Position: ", servos.claw.getPosition());
             telemetry.addData("Motor Fast: ", motorFast);
             telemetry.addData("Arm Fast: ", armFast);
+            telemetry.addData("Current Runtime: ", currentRuntime);
+            telemetry.addData("End Runtime Button A: ", endRuntimeA);
+            telemetry.addData("End Runtime Left Bumper: ", endRuntimeBumper);
 
-// Defines if drive motor speed and arm motor speed are fast or slow
-            if (gamepad1.left_trigger != 0 && motorFast) {
-                motorFast = false;
-            } else if (gamepad1.left_trigger != 0 && !motorFast) {
-                motorFast = true;
+// Sets button and trigger to active if it has been 2 seconds
+            if (currentRuntime >= endRuntimeA) {
+                buttonAActive = true;
+            } else {
+                buttonAActive = false;
+            }
+            if (currentRuntime >= endRuntimeBumper) {
+                leftBumperActive = true;
+            } else {
+                leftBumperActive = false;
             }
 
-            if (gamepad2.a && armFast) {
-                armFast = false;
-            } else if (gamepad2.a && !armFast) {
-                armFast = true;
+// Defines if drive motor speed and arm motor speed are fast or slow
+            if (gamepad1.left_bumper && leftBumperActive) {
+                if (leftBumperRelease) {
+                    motorFast = !motorFast;
+                    endRuntimeBumper = currentRuntime+1000;
+                }
+            }
 
+            if (gamepad2.a && buttonAActive) {
+                if (buttonARelease) {
+                    armFast = !armFast;
+                    endRuntimeA = currentRuntime+1000;
+                }
             }
 
 // Sets drive motors to joystick locations
@@ -91,10 +117,8 @@ public class DriveAndGlyphArmTwoController extends LinearOpMode {
 // Sets claw servo to open or closed position
             if (gamepad2.right_trigger == 1) {
                 servos.claw.setPosition(1);
-                Thread.sleep(250);
             } else if (gamepad2.left_trigger == 1) {
                 servos.claw.setPosition(.4);
-                Thread.sleep(250);
             }
             idle();
         }
