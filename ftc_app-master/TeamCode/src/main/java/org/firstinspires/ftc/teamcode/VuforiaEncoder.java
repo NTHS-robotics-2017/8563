@@ -6,11 +6,11 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
-import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
+import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
 
 /*
  * Created by zain- on 10/1/2017.
@@ -20,7 +20,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 public class VuforiaEncoder extends LinearOpMode {
 
 // Declares robot object to get information from DriveMotors.java
-    DriveMotors     robot = new DriveMotors();
+    DriveMotors robot = new DriveMotors();
 
     private ElapsedTime     runtime = new ElapsedTime();
 

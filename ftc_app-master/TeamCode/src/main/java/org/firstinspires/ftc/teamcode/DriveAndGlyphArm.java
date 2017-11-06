@@ -2,18 +2,22 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
+import org.firstinspires.ftc.teamcode.Hardware.Servos;
+
+@Disabled
 @TeleOp(name="DriveAndGlyphArm")
 public class DriveAndGlyphArm extends LinearOpMode {
 
 // Declares robot object to get information from DriveMotors.java, Servos.java
-    DriveMotors         motors   = new DriveMotors();
-    Servos              servos   = new Servos();
+    DriveMotors motors   = new DriveMotors();
+    Servos servos   = new Servos();
 
     private ElapsedTime runtime = new ElapsedTime();
 

@@ -5,6 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
+
 /*
  * Created by zain- on 10/1/2017.
  */
@@ -13,14 +15,14 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class EncoderByDistance extends LinearOpMode {
     
 // Declares robot object to get information from DriveMotors.java
-    DriveMotors     robot = new DriveMotors();
+    DriveMotors robot = new DriveMotors();
 
     private ElapsedTime     runtime = new ElapsedTime();
 
 // Setting statistics of the motors/robot & doing basic math required in the program
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;
     static final double     DRIVE_GEAR_REDUCTION    = 1.0 ;
-    static final double     WHEEL_DIAMETER_INCHES   = 5 ;
+    static final double     WHEEL_DIAMETER_INCHES   = 4 ;
     static final double     COUNTS         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) / (WHEEL_DIAMETER_INCHES * Math.PI);
     static final double     DRIVE_SPEED             = .6;
     static final double     TURN_SPEED              = 0.5;
@@ -55,11 +57,11 @@ public class EncoderByDistance extends LinearOpMode {
 // Drives 48 inches in a straight line, times out after 6 seconds.
         encoderDrive(DRIVE_SPEED, 48, 48, 6.0);
         sleep(2000);
-        encoderDrive(TURN_SPEED, -4, 4, 5);
+       /* encoderDrive(TURN_SPEED, -4, 4, 5);
         sleep(2000);
         encoderDrive(DRIVE_SPEED, 48, 48, 5);
         sleep(2000);
-
+*/
 // Turns right for 12 inches of wheel movement, then waits for 5 seconds
 // encoderDrive(TURN_SPEED, 12, -12, 4.0);
         telemetry.addData("Path", "Complete");

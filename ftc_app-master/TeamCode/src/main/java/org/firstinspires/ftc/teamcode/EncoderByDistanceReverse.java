@@ -1,19 +1,23 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
 
 /*
  * Created by zain- on 10/1/2017.
  */
 
+@Disabled
 @Autonomous(name="EncoderByDistanceReverse")
 public class EncoderByDistanceReverse extends LinearOpMode {
     
 // Declares robot object to get information from DriveMotors.java
-    DriveMotors     robot = new DriveMotors();
+    DriveMotors robot = new DriveMotors();
 
     private ElapsedTime     runtime = new ElapsedTime();
 

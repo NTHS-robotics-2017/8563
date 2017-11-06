@@ -1,18 +1,22 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
+import org.firstinspires.ftc.teamcode.Hardware.Sensors;
+import org.firstinspires.ftc.teamcode.Hardware.Servos;
+
+@Disabled
 @Autonomous(name="Main Autonomous")
-public class MainAutonomous extends LinearOpMode {
+public class ColorSensor extends LinearOpMode {
 
     // Declares robot object to get information from DriveMotors.java, Servos.java, Sensors.java
-    DriveMotors         motors   = new DriveMotors();
-    Servos              servos   = new Servos();
-    Sensors             sensors  = new Sensors();
+    DriveMotors motors   = new DriveMotors();
+    Servos servos   = new Servos();
+    Sensors sensors  = new Sensors();
 
     private ElapsedTime runtime = new ElapsedTime();
 

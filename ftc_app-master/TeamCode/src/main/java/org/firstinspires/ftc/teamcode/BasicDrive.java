@@ -5,11 +5,13 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
+
 @TeleOp(name="BasicDrive")
 public class BasicDrive extends LinearOpMode {
 
 // Declares robot object to get information from DriveMotors.java
-    DriveMotors         motors   = new DriveMotors();
+    DriveMotors motors   = new DriveMotors();
 
     private ElapsedTime runtime = new ElapsedTime();
 

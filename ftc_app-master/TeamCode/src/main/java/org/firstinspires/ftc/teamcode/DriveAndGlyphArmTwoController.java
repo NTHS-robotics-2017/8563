@@ -5,15 +5,17 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
+import org.firstinspires.ftc.teamcode.Hardware.Servos;
 
 @TeleOp(name="DriveAndGlyphArmTwoController")
 public class DriveAndGlyphArmTwoController extends LinearOpMode {
 
     // Declares robot object to get information from DriveMotors.java, Servos.java
-    DriveMotors         motors   = new DriveMotors();
-    Servos              servos   = new Servos();
+    DriveMotors motors   = new DriveMotors();
+    Servos servos   = new Servos();
 
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -102,13 +104,13 @@ public class DriveAndGlyphArmTwoController extends LinearOpMode {
                 if (armFast) {
                     motors.arm.setPower(motorSpeed);
                 } else {
-                    motors.arm.setPower(motorSpeed/6);
+                    motors.arm.setPower(motorSpeed/4);
                 }
             } else if (gamepad2.right_bumper) {
                 if (armFast) {
                     motors.arm.setPower(-motorSpeed);
                 } else {
-                    motors.arm.setPower(-motorSpeed/6);
+                    motors.arm.setPower(-motorSpeed/4);
                 }
             } else {
                 motors.arm.setPower(0);
