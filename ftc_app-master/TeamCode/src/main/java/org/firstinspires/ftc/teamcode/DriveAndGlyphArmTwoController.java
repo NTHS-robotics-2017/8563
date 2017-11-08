@@ -1,4 +1,3 @@
-/* This opmode is not usable at this time. */
 
 package org.firstinspires.ftc.teamcode;
 
