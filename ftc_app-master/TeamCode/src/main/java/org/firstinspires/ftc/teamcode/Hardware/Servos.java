@@ -12,6 +12,8 @@ public class Servos {
 
     // Declaring motors
     public Servo  claw  = null;
+    public Servo  clawLeft  = null;
+    public Servo  clawRight  = null;
 
     // Creating hwMap object and setting it to null
     HardwareMap hwMap           =  null;
@@ -30,5 +32,7 @@ public class Servos {
 
 // Declaring servos to use in other classes
         claw = hwMap.get(Servo.class, "servoClaw");
+        clawLeft = hwMap.get(Servo.class, "servoClawLeft");
+        clawRight = hwMap.get(Servo.class, "servoClawRight");
     }
 }

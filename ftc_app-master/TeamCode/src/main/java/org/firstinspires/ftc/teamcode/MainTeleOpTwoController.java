@@ -60,8 +60,8 @@ public class MainTeleOpTwoController extends LinearOpMode {
 
 // Updates telemetry data
             telemetry.update();
-            telemetry.addData("Left Claw Servo Position: ", servos.leftclaw.getPosition());
-            telemetry.addData("Right Claw Servo Position: ", servos.rightClaw.getPosition());
+            telemetry.addData("Left Claw Servo Position: ", servos.clawLeft.getPosition());
+            telemetry.addData("Right Claw Servo Position: ", servos.clawRight.getPosition());
             telemetry.addData("Motor Fast: ", motorFast);
             telemetry.addData("Arm Fast: ", armFast);
             telemetry.addData("Current Runtime: ", currentRuntime);
@@ -96,11 +96,11 @@ public class MainTeleOpTwoController extends LinearOpMode {
 
 // Sets claw servo to open or closed position
             if (gamepad2.right_trigger == 1) {
-                servos.leftClaw.setPosition(leftClawOpen);
-                servos.rightClaw.setPosition(rightClawOpen);
+                servos.clawLeft.setPosition(leftClawOpen);
+                servos.clawRight.setPosition(rightClawOpen);
             } else if (gamepad2.left_trigger == 1) {
-                servos.leftClaw.setPosition(leftClawClose);
-                servos.rightClaw.setPosition(rightClawClose);
+                servos.clawLeft.setPosition(leftClawClose);
+                servos.clawRight.setPosition(rightClawClose);
             }
 
 
