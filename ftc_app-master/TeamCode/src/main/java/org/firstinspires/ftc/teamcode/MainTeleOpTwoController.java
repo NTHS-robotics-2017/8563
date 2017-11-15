@@ -40,10 +40,10 @@ public class MainTeleOpTwoController extends LinearOpMode {
         double endRuntimeBumper = 0;
 
 // Claw servo positions
-        double leftClawOpen = 1;
-        double rightClawOpen = 0;
-        double leftClawClose = 0;
-        double rightClawClose = 1;
+        double leftClawOpen = 1; //NEEDS TO BE CHANGED!!!
+        double rightClawOpen = 0; //NEEDS TO BE CHANGED!!!
+        double leftClawClose = 0; //NEEDS TO BE CHANGED!!!
+        double rightClawClose = 1; //NEEDS TO BE CHANGED!!!
 
 // Sets motors to run without encoders for driver operation
         motors.left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
