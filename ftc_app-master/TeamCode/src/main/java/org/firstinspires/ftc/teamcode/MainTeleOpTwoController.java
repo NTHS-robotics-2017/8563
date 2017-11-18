@@ -10,7 +10,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
 import org.firstinspires.ftc.teamcode.Hardware.Servos;
 
-@Disabled
 @TeleOp(name="MainTeleOpTwoController")
 public class MainTeleOpTwoController extends LinearOpMode {
 
@@ -40,16 +39,18 @@ public class MainTeleOpTwoController extends LinearOpMode {
         double endRuntimeBumper = 0;
 
 // Claw servo positions
-        double leftClawOpen = 1; //NEEDS TO BE CHANGED!!!
-        double rightClawOpen = 0; //NEEDS TO BE CHANGED!!!
-        double leftClawClose = 0; //NEEDS TO BE CHANGED!!!
-        double rightClawClose = 1; //NEEDS TO BE CHANGED!!!
+        double leftClawInit = 0;
+        double rightClawInit = 1;
+        double leftClawOpen = .1;
+        double rightClawOpen = .9;
+        double leftClawClose = .6;
+        double rightClawClose = .4;
 
 // Sets motors to run without encoders for driver operation
         motors.left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motors.right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        servos.clawLeft.setPosition(leftClawOpen);
-        servos.clawRight.setPosition(rightClawOpen);
+        servos.clawLeft.setPosition(leftClawInit);
+        servos.clawRight.setPosition(rightClawInit);
 
         waitForStart();
 

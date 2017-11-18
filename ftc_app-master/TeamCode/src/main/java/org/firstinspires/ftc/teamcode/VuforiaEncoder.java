@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -16,6 +17,7 @@ import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
  * Created by zain- on 10/1/2017.
  */
 
+@Disabled
 @Autonomous(name="VuforiaEncoder")
 public class VuforiaEncoder extends LinearOpMode {
 

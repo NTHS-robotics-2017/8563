@@ -91,7 +91,7 @@ public class Forward extends LinearOpMode {
         robot.left.setPower(FORWARD_SPEED);
         robot.right.setPower(FORWARD_SPEED);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 3.0)) {
+        while (opModeIsActive() && (runtime.seconds() < 0.5)) {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
