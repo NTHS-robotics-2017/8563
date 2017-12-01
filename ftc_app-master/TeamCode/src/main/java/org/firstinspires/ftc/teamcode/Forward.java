@@ -35,7 +35,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
-import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
+import org.firstinspires.ftc.teamcode.Hardware.Motors;
 
 /**
  * This file illustrates the concept of driving a path based on time.
@@ -62,7 +62,7 @@ import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
 public class Forward extends LinearOpMode {
 
     /* Declare OpMode members. */
-    DriveMotors robot   = new DriveMotors();   // Use a Pushbot's hardware
+    Motors robot   = new Motors();   // Use a Pushbot's hardware
     private ElapsedTime     runtime = new ElapsedTime();
 
 

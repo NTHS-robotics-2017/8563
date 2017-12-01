@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
-import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
+import org.firstinspires.ftc.teamcode.Hardware.Motors;
 
 /*
  * Created by zain- on 10/1/2017.
@@ -18,7 +18,7 @@ import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
 @Autonomous(name="Drive By Gyro")
 public class DriveByGyroConcept extends LinearOpMode {
 
-    DriveMotors robot   = new DriveMotors();
+    Motors robot   = new Motors();
     ModernRoboticsI2cGyro   gyro    = null;
 
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;

@@ -6,14 +6,14 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
+import org.firstinspires.ftc.teamcode.Hardware.Motors;
 import org.firstinspires.ftc.teamcode.Hardware.Servos;
 
 @TeleOp(name="TeleOpOneController")
 public class TeleOpOneController extends LinearOpMode {
 
-    // Declares robot object to get information from DriveMotors.java, Servos.java
-    DriveMotors motors   = new DriveMotors();
+    // Declares robot object to get information from Motors.java, Servos.java
+    Motors motors   = new Motors();
     Servos servos   = new Servos();
 
     private ElapsedTime runtime = new ElapsedTime();
@@ -94,10 +94,13 @@ public class TeleOpOneController extends LinearOpMode {
 // Sets arm motor to left joystick position of gamepad 2
             if (gamepad1.dpad_up){
                 motors.arm.setPower(-1);
+                motors.arm_2.setPower(-1);
             } else if (gamepad1.dpad_down) {
                 motors.arm.setPower(1);
+                motors.arm_2.setPower(1);
             } else {
                 motors.arm.setPower(0);
+                motors.arm_2.setPower(0);
             }
 
 // Sets claw servo to open or closed position

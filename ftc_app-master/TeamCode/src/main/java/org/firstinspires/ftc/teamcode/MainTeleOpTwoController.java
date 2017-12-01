@@ -1,20 +1,19 @@
 
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
+import org.firstinspires.ftc.teamcode.Hardware.Motors;
 import org.firstinspires.ftc.teamcode.Hardware.Servos;
 
 @TeleOp(name="MainTeleOpTwoController")
 public class MainTeleOpTwoController extends LinearOpMode {
 
-    // Declares robot object to get information from DriveMotors.java, Servos.java
-    DriveMotors motors   = new DriveMotors();
+    // Declares robot object to get information from Motors.java, Servos.java
+    Motors motors   = new Motors();
     Servos servos   = new Servos();
 
     private ElapsedTime runtime = new ElapsedTime();
@@ -93,7 +92,8 @@ public class MainTeleOpTwoController extends LinearOpMode {
             }
 
 // Sets arm motor to left joystick position of gamepad 2
-            motors.arm.setPower(gamepad2.left_stick_y);
+            motors.arm.setPower(-gamepad2.right_stick_y);
+            motors.arm_2.setPower(gamepad2.left_stick_y);
 
 // Sets claw servo to open or closed position
             if (gamepad2.right_trigger == 1) {

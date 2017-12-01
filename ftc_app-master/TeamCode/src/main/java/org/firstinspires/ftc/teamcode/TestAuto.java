@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
+import org.firstinspires.ftc.teamcode.Hardware.Motors;
 
 /**
  * Created by smich on 11/18/2017.
@@ -16,7 +16,7 @@ import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
 public class TestAuto extends LinearOpMode {
 
     /* Declare OpMode members. */
-    DriveMotors robot   = new DriveMotors();   // Use a Pushbot's hardware
+    Motors robot   = new Motors();   // Use a Pushbot's hardware
     private ElapsedTime runtime = new ElapsedTime();
 
 

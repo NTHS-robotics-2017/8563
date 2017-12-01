@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.Hardware.DriveMotors;
+import org.firstinspires.ftc.teamcode.Hardware.Motors;
 import org.firstinspires.ftc.teamcode.Hardware.Sensors;
 import org.firstinspires.ftc.teamcode.Hardware.Servos;
 
@@ -14,7 +14,7 @@ import org.firstinspires.ftc.teamcode.Hardware.Servos;
 public class ColorSensor extends LinearOpMode {
 
     // Declares robot object to get information from DriveMotors.java, Servos.java, Sensors.java
-    DriveMotors motors   = new DriveMotors();
+    Motors motors   = new Motors();
     Servos servos   = new Servos();
     Sensors sensors  = new Sensors();
 
