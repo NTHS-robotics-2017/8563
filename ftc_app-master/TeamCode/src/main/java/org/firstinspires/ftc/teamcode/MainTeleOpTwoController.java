@@ -93,7 +93,7 @@ public class MainTeleOpTwoController extends LinearOpMode {
 
 // Sets arm motor to left joystick position of gamepad 2
             motors.arm.setPower(-gamepad2.right_stick_y);
-            motors.arm_2.setPower(gamepad2.left_stick_y);
+            motors.arm_2.setPower(-gamepad2.left_stick_y);
 
 // Sets claw servo to open or closed position
             if (gamepad2.right_trigger == 1) {
