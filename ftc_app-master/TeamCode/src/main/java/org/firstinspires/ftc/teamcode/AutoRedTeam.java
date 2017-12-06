@@ -34,6 +34,8 @@ public class AutoRedTeam extends LinearOpMode {
         servos.init(hardwareMap);
         sensors.init(hardwareMap);
 
+        Gyro.init();
+
         waitForStart();
 
         while (opModeIsActive()) {
@@ -41,12 +43,12 @@ public class AutoRedTeam extends LinearOpMode {
 // Updates telemetry
             telemetry.update();
 
-            if (sensors.color.red() > sensors.color.blue() && sensors.color.red() > sensors.color.green() && sensors.color.red() > 4) {
+            /*if (sensors.color.red() > sensors.color.blue() && sensors.color.red() > sensors.color.green() && sensors.color.red() > 4) {
                 // Insert code for if ball color is red
             } else if (sensors.color.blue() > sensors.color.red() && sensors.color.blue() > sensors.color.green() && sensors.color.blue() > 4) {
                 // Insert code for if ball color is blue
             }
-            Gyro.gyroDrive(DRIVE_SPEED,38,0);
+          */  Gyro.gyroDrive(DRIVE_SPEED,38,0);
             idle();
         }
     }
