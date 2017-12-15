@@ -14,6 +14,7 @@ import org.firstinspires.ftc.teamcode.Hardware.Motors;
  * Created by zain- on 10/1/2017.
  */
 
+@Disabled
 @Autonomous(name="Drive By Gyro")
 public class DriveByGyroConcept extends LinearOpMode {
 
